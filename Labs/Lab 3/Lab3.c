@@ -42,15 +42,13 @@ int main() {
 
     // Loop through each employee record
 int result;
-while ((result = fscanf(inFile, "%s %s %f %s %d", empNo, dept, &payRate, exempt, &hoursWorked)) != EOF) {
-    if (result == 5) {
-        // Debug print to confirm data is being read
-        printf("Read: %s %s %.2f %s %d\n", empNo, dept, payRate, exempt, hoursWorked);
+while (fscanf(inFile, "%s %s %f %s %d", empNo, dept, &payRate, exempt, &hoursWorked) == 5) {
+    printf("Read: %s %s %.2f %s %d\n", empNo, dept, payRate, exempt, hoursWorked);
 
-        basePay = payRate * hoursWorked;
-        fprintf(outFile, "%-12s %-10s %-10.2f %-8s %-12d %-10.2f\n",
-                empNo, dept, payRate, exempt, hoursWorked, basePay);
-    } else {
+    basePay = payRate * hoursWorked;
+    fprintf(outFile, "%-12s %-10s %-10.2f %-8s %-12d %-10.2f\n",
+            empNo, dept, payRate, exempt, hoursWorked, basePay);
+} else {
         // If fscanf didn’t read all 5 values, show what happened
         printf("Line skipped (result=%d)\n", result);
     }
