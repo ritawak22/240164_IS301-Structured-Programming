@@ -43,7 +43,8 @@ int main() {
     // Loop through each employee record
 int result;
 while (fscanf(inFile, "%s %s %f %s %d", empNo, dept, &payRate, exempt, &hoursWorked) == 5) {
-    printf("Read: %s %s %.2f %s %d\n", empNo, dept, payRate, exempt, hoursWorked);
+    printf("Read: %s %s %.2f %s %d\n",
+         empNo, dept, payRate, exempt, hoursWorked);
 
     basePay = payRate * hoursWorked;
     fprintf(outFile, "%-12s %-10s %-10.2f %-8s %-12d %-10.2f\n",
